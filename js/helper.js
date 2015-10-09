@@ -82,7 +82,7 @@ function logClicks(x, y) {
         x: x,
         y: y
     });
-    // console.log('x location: ' + x + '; y location: ' + y);
+     console.log('x location: ' + x + '; y location: ' + y);
 }
 
 /*
@@ -158,6 +158,25 @@ function initializeMap() {
         return locations;
     }
 
+
+    function setMarker(name) {
+        var mymarker = {
+            "icon": "images/brownMaerker-t.png",
+            "image": null
+        }
+        var marker = mapmaker[name] ;
+        if (marker != null)  {
+            mymarker.icon = {
+                url: marker.icon,
+                size: new google.maps.Size(32, 32),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 32)
+            };
+            mymarker.image = "<div><img src='" + marker.image + "' height='32' width='32' alt='City image'></div>" ;
+        }
+        return mymarker ;
+    }
+
     /*
     createMapMarker(placeData) reads Google Places search results to create map pins.
     placeData is the object returned from search results containing information
@@ -168,35 +187,24 @@ function initializeMap() {
         var lat = placeData.geometry.location.lat(); // latitude from the place service
         var lon = placeData.geometry.location.lng(); // longitude from the place service
         var name = placeData.formatted_address; // name of the place from the place service
-
         var trimname = name.split(",")[0].trim();
-        var mymarker = mapmaker[trimname]
-        if (mymarker != null) {
-            var icon = mymarker.icon;
-            var image = mymarker.image;
-        } else {
-            console.log(name, "Missing images")
-        }
-
-
         var bounds = window.mapBounds; // current boundaries of the map window
         // marker is an object with additional data about the pin for a single location
+        var mymarker = setMarker(trimname);
         var marker = new google.maps.Marker({
             map: map,
             position: placeData.geometry.location,
-            icon: icon,
+            icon: mymarker.icon,
             title: name
         });
-
         // infoWindows are the little helper windows that open when you click
         // or hover over a pin on a map. They usually contain more information
         // about a location.
         var content = name;
-        //var image = project.getImage(content.split(",")[0].trim()) ;
-        // var image = mapmaker[content.split(",")[0].trim()];
-        if (image != null) {
-            content = "<div><img src='" + image + "' height='32' width='32' alt='City image'></div>"
+        if (mymarker.image != null) {
+            content = mymarker.image ;
         }
+
         var infoWindow = new google.maps.InfoWindow({
             content: content
         });

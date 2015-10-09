@@ -115,39 +115,39 @@ var project = {
 
 var mapmaker = {
     "La Haye": {
-        "icon": "images/homeMarker.png",
+        "icon": "images/homeMarker-t.png",
         "image": "images/TheHague.jpg"
     },
     "The Hague": {
-        "icon": "images/homeMarker.png",
+        "icon": "images/homeMarker-t.png",
         "image": "images/TheHague.jpg"
     },
     "Savannakhet": {
-        "icon": "images/purpleMarker.png",
+        "icon": "images/brownMarker-t.png",
         "image": "images/Savannakhet.jpg"
     },
     "Hanoï": {
-        "icon": "images/purpleMarker.png",
+        "icon": "images/purpleMarker-t.png",
         "image": "images/Hanoi.jpg"
     },
     "Lâm Đồng": {
-        "icon": "images/blueMarker.jpg",
+        "icon": "images/purpleMarker-t.png",
         "image": "images/Lamdong.jpg"
     },
     "Hô Chi Minh-Ville": {
-        "icon": "images/purpleMarker.png",
+        "icon": "images/purpleMarker-t.png",
         "image": "images/saigon.jpg"
     },
     "Hô Chi Minh-City": {
-        "icon": "images/purpleMarker.png",
+        "icon": "images/purpleMarker-t.png",
         "image": "images/saigon.jpg"
     },
     "Paksé": {
-        "icon": "images/blueMarker.jpg",
+        "icon": "images/brownMarker-t.png",
         "image": "images/Parkse.jpg"
     },
     "Pakse": {
-        "icon": "images/blueMarker.jpg",
+        "icon": "images/brownMarker-t.png",
         "image": "images/Parkse.jpg"
     }
 }
@@ -309,10 +309,3 @@ bio.display();
 work.display();
 project.display();
 education.display();
-
-
-
-
-
-
-
