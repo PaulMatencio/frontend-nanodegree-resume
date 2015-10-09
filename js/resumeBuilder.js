@@ -10,7 +10,7 @@ var bio = {
         "github": "PatrickVauban",
         "location": "The Hague, The Netherlands"
     },
-    "skills": ["Active listening", "Taking responsability", "Humor", "Creativity", "Negotiation"],
+    "skills": ["Active listening", "Taking responsability", "Humor", "Creativity"],
     "biopic": "images/fry.jpg"
 };
 
@@ -55,8 +55,18 @@ var education = {
         ]
     }, ],
     "online": [{
-        "date": 2015,
-        "minor": "Web Developer"
+        "class" : {
+            "title" : "Front-End Web Developer",
+            "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        },
+        "dates": "Sep-2015",
+        "school": {
+            "name" : "Udacity",
+            "url" : "https://www.udacity.com"
+        },
+        "minor": [
+            "Nanodegree"
+        ]
     }]
 }
 
@@ -196,16 +206,12 @@ function displayInternationalizeButton() {
 
 /*  Work section of the  Resume */
 work.PutOnResume = function(index) {
-    // Create a  new div for ecah work
     $("#workExperience").append(HTMLworkStart);
-    // concat employer and title
     var employeur = HTMLworkEmployer.replace("%data%", work.jobs[index].employer);
     employeur = employeur.replace("#", work.jobs[index].url);
     title = HTMLworkTitle.replace("%data%", work.jobs[index].title);
     $(".work-entry:last").append(employeur + title);
-    //concat dates
     $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[index].dates));
-    //concat location and country and description
     $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[index].location));
     $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[index].description));
 }
@@ -226,12 +232,9 @@ work.locationizer = function() {
     return locationArray;
 }
 
-
 project.getImage = function(name) {
     for (proj in project.projects) {
-        // console.log(name, project.projects[proj].location);
         if (project.projects[proj].location.search(name) >= 0) {
-            // console.log("hit");
             return project.projects[proj].images[0];
         }
     }
@@ -248,7 +251,6 @@ project.PutOnResume = function(index) {
     var title = HTMLprojectTitle.replace("%data%", project.projects[index].title);
     $(".project-entry:last").append(title.replace("#", project.projects[index].url));
     $(".project-entry:last").append(HTMLprojectDates.replace("%data%", project.projects[index].dates));
-    /* $(".project-entry:last").append(HTMLprojectLocation.replace("%data%",project.project[index].location)); */
     $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", project.projects[index].description));
     if (project.projects[index].images.length > 0) {
         images = HTMLRow;
@@ -269,11 +271,9 @@ project.display = function() {
     }
     /* Education section of the Resume */
 
-
 education.putOnresume = function(index) {
     $("#education").append(HTMLschoolStart);
     var school = HTMLschoolName.replace("%data%", education.schools[index].name);
-    // console.log(school);
     $(".education-entry:last").append(school.replace("#", education.schools[index].url));
     $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[index].degree));
     $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[index].dates));
@@ -281,30 +281,28 @@ education.putOnresume = function(index) {
     $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[index].major));
 }
 
+education.putOnline = function(index) {
+    $(".education-entry:last").append(HTMLonlineClasses);
+    var title = HTMLonlineTitle.replace("%data%", education.online[index].class.title)  + HTMLonlineSchool.replace("%data%", education.online[index].school.name) ;
+    $(".education-entry:last").append(title.replace("#", education.online[index].class.url));
+    $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.online[index].dates +" - "+ education.online[index].minor[0])) ;
+    var url = HTMLonlineURL.replace("%data%", education.online[index].school.name)
+    $(".education-entry:last").append(url.replace("#", education.online[index].school.url)) ;
+}
+
 education.display = function() {
     for (var educ in education.schools.reverse()) {
         education.putOnresume(educ);
     }
+    for (var online in education.online.reverse()) {
+        education.putOnline(online)
+    }
 }
-
-
-/* map API */
-/* d3 API */
-/*
-var paragraphs = document.getElementsByTagName("p");
-for (var i = 0; i < paragraphs.length; i++) {
-  var paragraph = paragraphs.item(i);
-  paragraph.style.setProperty("color", "white", null);
-} can be replaced by
- d3.selectAll("p").style("color", "white");
-*/
-
 
 /*  DISPLAY the RESUME */
 displayInternationalizeButton();
 displayMap();
 displayWelcome();
-
 bio.display();
 work.display();
 project.display();

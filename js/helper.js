@@ -58,7 +58,6 @@ var internationalizeButton = '<button class="button">Internationalize</button>';
 
 var googleMap = '<div id="map"></div>';
 
-
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
@@ -85,19 +84,6 @@ function logClicks(x, y) {
      console.log('x location: ' + x + '; y location: ' + y);
 }
 
-/*
-var fclick = function(loc) {
-   logClicks(loc.pageX,loc.pageY)
-}
-$(document).click(fclick) ;
-
-  Below is the same code as ablove but we are passing an javascript anonymous fuction  to the click argument => function without name and are oftent returned by other
-  functions or objects
-
-  The  example is
-  $.getJSON("test.json",function(data){ console.log(data)})
-*/
-
 $(document).click(function(loc) {
     // your code goes here!
     var x = loc.pageX;
@@ -105,15 +91,12 @@ $(document).click(function(loc) {
     logClicks(x, y);
 });
 
-
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map; // declares a global map variable
-
 
 /*
 Start here! initializeMap() is called when page is loaded.
