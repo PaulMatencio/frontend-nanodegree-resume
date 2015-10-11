@@ -1,4 +1,3 @@
-var welcomeMessage = "Hello, here are my bio:";
 
 var bio = {
     "name": "Patrick Vauban",
@@ -11,6 +10,7 @@ var bio = {
         "location": "The Hague, The Netherlands"
     },
     "skills": ["Active listening", "Taking responsability", "Humor", "Creativity"],
+    "welcomeMessage": "Chao cac bạn",
     "biopic": "images/fry.jpg"
 };
 
@@ -178,7 +178,7 @@ function inName(myname) {
 
 
 function displayWelcome() {
-    $("#welcome").prepend(HTMLwelcomeMsg.replace("%data%", welcomeMessage));
+    $("#header").prepend(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 }
 
 function mySkills() {
@@ -195,7 +195,8 @@ bio.display = function display() {
     $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
     $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
     $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-    $("#topContacts").append(HTMLblog.replace("%data%", bio.contacts.github));
+    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+    $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
     mySkills();
 }
 
@@ -286,7 +287,7 @@ education.putOnline = function(index) {
     var title = HTMLonlineTitle.replace("%data%", education.online[index].class.title)  + HTMLonlineSchool.replace("%data%", education.online[index].school.name) ;
     $(".education-entry:last").append(title.replace("#", education.online[index].class.url));
     $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.online[index].dates +" - "+ education.online[index].minor[0])) ;
-    var url = HTMLonlineURL.replace("%data%", education.online[index].school.name)
+    var url = HTMLonlineURL.replace("%data%", education.online[index].school.url)
     $(".education-entry:last").append(url.replace("#", education.online[index].school.url)) ;
 }
 
@@ -307,3 +308,27 @@ bio.display();
 work.display();
 project.display();
 education.display();
+
+//  Change Header backgroud color 
+var ul = $('#skills') ;
+var header =$('#header');
+$(document).ready( function() {
+    header.css("background-color","rgb(116,130,101)") ;
+    if ($(window).width() >=0 ) {
+        ul.addClass("flex-box-col");
+    }
+});
+
+// change display orientation when window size > 600 px  ( row -> column)
+// var ul = $('#skills') ;
+$(window).resize(function() {
+    if ($(window).width() >= 600) {  
+        ul.addClass("flex-box-col");
+    } else {
+        ul.removeClass("flex-box-col");   
+    }   
+});
+
+
+
+
