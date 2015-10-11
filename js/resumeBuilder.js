@@ -3,10 +3,10 @@ var bio = {
     "name": "Patrick Vauban",
     "role": "Happy man",
     "contacts": {
-        "email": "patrick.vauban@gmail.com",
+        "email": "p.vauban@gmail.com",
         "mobile": "+3161894564",
         "twitter": "@patrickv",
-        "github": "PatrickVauban",
+        "github": "Patrick V",
         "location": "The Hague, The Netherlands"
     },
     "skills": ["Active listening", "Taking responsability", "Humor", "Creativity"],
@@ -176,28 +176,42 @@ function inName(myname) {
     return name1[1] + " " + name1[0];
 }
 
-
+/*
 function displayWelcome() {
     $("#header").prepend(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 }
+*/
 
-function mySkills() {
+bio.myWelcome = function() {
+     $("#header").prepend(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+}
+
+bio.mySkills = function() {
     $("#header").append(HTMLskillsStart);
     for (var skill in bio.skills) {
         $("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));
     }
 }
 
-bio.display = function display() {
+bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
     $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
-    $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-    $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-    $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+    var mobile = HTMLmobile.replace("%data%", bio.contacts.mobile) ;
+    $("#topContacts").append(mobile);  
+    $("#footerContacts").append(mobile);  
+    var email = HTMLemail.replace("%data%", bio.contacts.email);
+    $("#topContacts").append(email);
+    $("#footerContacts").append(email);
+    var twitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts").append(twitter);
+    $("#footerContacts").append(twitter);
+    var github = HTMLgithub.replace("%data%", bio.contacts.github);
+    $("#topContacts").append(github);
+    $("#footerContacts").append(github);
     $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-    mySkills();
+    bio.mySkills();
+    bio.myWelcome();
 }
 
 
@@ -206,7 +220,7 @@ function displayInternationalizeButton() {
 }
 
 /*  Work section of the  Resume */
-work.PutOnResume = function(index) {
+work.putOnResume = function(index) {
     $("#workExperience").append(HTMLworkStart);
     var employeur = HTMLworkEmployer.replace("%data%", work.jobs[index].employer);
     employeur = employeur.replace("#", work.jobs[index].url);
@@ -219,7 +233,7 @@ work.PutOnResume = function(index) {
 
 work.display = function display() {
     for (var job in work.jobs.reverse()) {
-        work.PutOnResume(job);
+        work.putOnResume(job);
     }
 }
 
@@ -247,7 +261,7 @@ var HTMLRow = '<div class="row">';
 var HTMLCol = '<div class="%data%">';
 var HTMLEndDiv = "</div>"
 
-project.PutOnResume = function(index) {
+project.putOnResume = function(index) {
     $("#projects").append(HTMLprojectStart);
     var title = HTMLprojectTitle.replace("%data%", project.projects[index].title);
     $(".project-entry:last").append(title.replace("#", project.projects[index].url));
@@ -267,7 +281,7 @@ project.PutOnResume = function(index) {
 project.display = function() {
         for (var proj in project.projects.reverse()) {
             /* putProjectOnResume(proj); */
-            project.PutOnResume(proj);
+            project.putOnResume(proj);
         }
     }
     /* Education section of the Resume */
@@ -303,7 +317,7 @@ education.display = function() {
 /*  DISPLAY the RESUME */
 displayInternationalizeButton();
 displayMap();
-displayWelcome();
+// displayWelcome();
 bio.display();
 work.display();
 project.display();

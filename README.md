@@ -1,3 +1,8 @@
+
+All projects are fake and some texts are copied from the Internet as for instance:
+	Preparing Tea ( TeaSource)
+
+#####################################################################################################################################
 # The Resume Project
 
 ## How do I complete this project?
