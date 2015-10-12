@@ -1,7 +1,6 @@
-
 var bio = {
     "name": "Patrick Vauban",
-    "role": "Happy man",
+    "role": "Web developer",
     "contacts": {
         "email": "p.vauban@gmail.com",
         "mobile": "+3161894564",
@@ -9,8 +8,8 @@ var bio = {
         "github": "Patrick V",
         "location": "The Hague, The Netherlands"
     },
-    "skills": ["Active listening", "Taking responsability", "Humor", "Creativity"],
-    "welcomeMessage": "Chao cac bạn",
+    "skills": ["Focus on result", "Taking responsability", "Creativity", "Sens of humor"],
+    "welcomeMessage": "Welcome: Xinh chao cac bạn",
     "biopic": "images/fry.jpg"
 };
 
@@ -19,19 +18,19 @@ var education = {
         "name": "Street University",
         "location": "Saigon, Vietnam",
         "url": "https://www.google.com/maps/d/viewer?mid=zM0A9j5HAmUs.k5zX5AIxoZII&hl=en",
-        "degree": "Drinking green tea",
+        "degree": "Preparing tea",
         "dates": "1900-1960",
         "minor": [
             "Vietnamese"
         ],
         "major": [
-            "Master of tea"
+            "The Art of preparing tea"
         ]
     }, {
         "name": "Life University",
         "location": "Savannakhet, Laos",
         "url": "https://www.youtube.com/watch?v=E5AKmTsBCgQ",
-        "degree": "Eating glutinous rice",
+        "degree": "Cooking glutinous rice",
         "dates": "1960-1970",
         "minor": [
             "French",
@@ -39,7 +38,7 @@ var education = {
             "Lao"
         ],
         "major": [
-            "rice planter"
+            "The Art of cooking rice"
         ]
     }, {
         "name": "Home University",
@@ -51,18 +50,18 @@ var education = {
             "no degree"
         ],
         "major": [
-            "No degree"
+            "The Art of hanging pictures"
         ]
     }, ],
     "online": [{
-        "class" : {
-            "title" : "Front-End Web Developer",
-            "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        "class": {
+            "title": "Front-End Web Developer",
+            "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
         },
         "dates": "Sep-2015",
         "school": {
-            "name" : "Udacity",
-            "url" : "https://www.udacity.com"
+            "name": "Udacity",
+            "url": "https://www.udacity.com"
         },
         "minor": [
             "Nanodegree"
@@ -87,7 +86,7 @@ var work = {
         "description": "Clearing Land as Part of the Slash-and-Burn Process; Burning; Preparing the Land for Sowing; Sowing; Weeding; Scaring the Birds Away; Harvest; Threshing, Winnowing and Storage. "
     }, {
         "employer": "MyBoss galery",
-        "url": "http://www.nowhere.org",
+        "url": "http://www.forumart.nl/",
         "title": "Galery Assistant",
         "dates": "1980-current",
         "location": "The Hague, Netherlands",
@@ -101,14 +100,14 @@ var project = {
         {
             "title": "Preparing tea",
             "dates": "1900-1920",
-            "description": "Preparing tea properly is easy but you must follow a few basic guidelines. The best tea in the world can taste horrible if prepared incorrectly, and conversely a very inexpensive tea can be very satisfying if made well. All TeaSource tea comes with specific steeping suggestions on the back of the bag, but some general guidelines are listed below.There are seven factors that effect the quality of brewed tea: The quality of the tea; The quality of the water; Correct measurement; Correct steeping temperature; Correct steeping time; Allowing the tea leaf to expand fully; Separating the leaf from the liquid at the end of the steeping process",
+            "description": "Preparing tea properly is easy but you must follow a few basic guidelines. The best tea in the world can taste horrible if prepared incorrectly, and conversely a very inexpensive tea can be very satisfying if made well. There are seven factors that effect the quality of brewed tea: The quality of the tea; The quality of the water; Correct measurement; Correct steeping temperature; Correct steeping time; Allowing the tea leaf to expand fully; Separating the leaf from the liquid at the end of the steeping process",
             "url": "http://www.asian-recipe.com/china/preparing-chinese-tea.html",
             "location": "Hanoï, Vietnam",
             "images": ["images/Tea-preparation-1.jpg", "images/Tea-preparation-2.jpg", "images/Tea-preparation-3.jpg"]
         }, {
             "title": "Harvesting rice",
             "dates": "1940-1960",
-            "description": "Harvesting rice consists of the basic operations cutting, threshing, and cleaning. Cutting is the first operation in harvesting. Depending on the crop's condition, and availability of labor or machinery, cutting can be done either manually or mechanically. However, due to severe labor shortage and the resulting increase in harvesting cost, the use of combines is increasing rapidely and economically attractive.",
+            "description": "Harvesting rice consists of the basic operations cutting, threshing, and cleaning. Cutting is the first operation in harvesting. Depending on the crop's condition, and availability of labor or machinery, cutting can be done either manually or mechanically. However, due to severe labor shortage and the resulting increase in harvesting cost, the use of combines is increasing rapidely and economically attractive for Vietnam and Laos.",
             "url": "http://www.infoplease.com/encyclopedia/science/rice-cultivation-harvesting.html",
             "location": "Savannakhet, Laos",
             "images": ["images/Rice-cutting-0.jpg", "images/Rice-cutting-2.jpg", "images/Rice-cutting-3.jpg", "images/Rice-cutting-4.jpg"]
@@ -183,7 +182,7 @@ function displayWelcome() {
 */
 
 bio.myWelcome = function() {
-     $("#header").prepend(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+    $("#skillsH3").prepend(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 }
 
 bio.mySkills = function() {
@@ -197,9 +196,9 @@ bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
     $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
-    var mobile = HTMLmobile.replace("%data%", bio.contacts.mobile) ;
-    $("#topContacts").append(mobile);  
-    $("#footerContacts").append(mobile);  
+    var mobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    $("#topContacts").append(mobile);
+    $("#footerContacts").append(mobile);
     var email = HTMLemail.replace("%data%", bio.contacts.email);
     $("#topContacts").append(email);
     $("#footerContacts").append(email);
@@ -298,11 +297,11 @@ education.putOnresume = function(index) {
 
 education.putOnline = function(index) {
     $(".education-entry:last").append(HTMLonlineClasses);
-    var title = HTMLonlineTitle.replace("%data%", education.online[index].class.title)  + HTMLonlineSchool.replace("%data%", education.online[index].school.name) ;
+    var title = HTMLonlineTitle.replace("%data%", education.online[index].class.title) + HTMLonlineSchool.replace("%data%", education.online[index].school.name);
     $(".education-entry:last").append(title.replace("#", education.online[index].class.url));
-    $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.online[index].dates +" - "+ education.online[index].minor[0])) ;
+    $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.online[index].dates + " - " + education.online[index].minor[0]));
     var url = HTMLonlineURL.replace("%data%", education.online[index].school.url)
-    $(".education-entry:last").append(url.replace("#", education.online[index].school.url)) ;
+    $(".education-entry:last").append(url.replace("#", education.online[index].school.url));
 }
 
 education.display = function() {
@@ -315,32 +314,31 @@ education.display = function() {
 }
 
 /*  DISPLAY the RESUME */
-displayInternationalizeButton();
-displayMap();
-// displayWelcome();
+
 bio.display();
 work.display();
 project.display();
 education.display();
+displayMap();
+displayInternationalizeButton();
 
-//  Change Header backgroud color 
-var ul = $('#skills') ;
-var header =$('#header');
-$(document).ready( function() {
-    header.css("background-color","rgb(116,130,101)") ;
-    if ($(window).width() >=0 ) {
+//  Change Header backgroud color
+var header = $('#header');
+$(document).ready(function() {
+    header.css("background-color", "rgb(116,130,101)");
+    if ($(window).width() >= 600) {
         ul.addClass("flex-box-col");
     }
 });
 
 // change display orientation when window size > 600 px  ( row -> column)
-// var ul = $('#skills') ;
+var ul = $('#skills');
 $(window).resize(function() {
-    if ($(window).width() >= 600) {  
+    if ($(window).width() >= 600) {
         ul.addClass("flex-box-col");
     } else {
-        ul.removeClass("flex-box-col");   
-    }   
+        ul.removeClass("flex-box-col");
+    }
 });
 
 
