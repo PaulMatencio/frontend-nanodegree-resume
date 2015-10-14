@@ -336,12 +336,29 @@ displayNavigation();
 //displayInternationalizeButton();
 
 //  Change Header backgroud color
+
+function swapClass(oldc, newc) {
+
+    $('#workExperience').removeClass(oldc) ;
+    $('#workExperience').addClass(newc) ;
+    $('#projects').removeClass(oldc) ;
+    $('#projects').addClass(newc) ;
+    $('#education').removeClass(oldc) ;
+    $('#education').addClass(newc) ;
+}
+
 var skill_ul = $('#skills');
 var header = $('#header');
+
 $(document).ready(function() {
     header.css("background-color", "rgb(116,130,101)");
     if ($(window).width() >= 600) {
         skill_ul.addClass("flex-box-col");
+    }
+    if ($(window).width() >= 1200) {
+        swapClass("col-12","colg-4") ;
+    } else {
+        swapClass("colg-4","col-12") ;
     }
 });
 
@@ -352,8 +369,14 @@ $(window).resize(function() {
         skill_ul.addClass("flex-box-col");
         $(".nav").removeClass("open");
         $(".nav__item").removeClass("open") ;
+
     } else {
         skill_ul.removeClass("flex-box-col");
+    }
+    if ($(window).width() >= 1200) {
+            swapClass("col-12","colg-4") ;
+    } else {
+        swapClass("colg-4","col-12") ;
     }
 });
 
