@@ -161,17 +161,17 @@ var mapmaker = {
     }
 }
 
-var navigation =  {
-  "title" : ["Work Experience","Projects","Education","Map"],
-  "anchor" : ["workExperience","projects","education","mapDiv"]
+var navigation = {
+    "title": ["Work Experience", "Projects", "Education", "Map"],
+    "anchor": ["workExperience", "projects", "education", "mapDiv"]
 }
 var HTMLnavlist = '<li class="nav__item"><a href="#"">%data%</a></li>';
 
 function displayNavigation() {
-   for ( nav in navigation.title) {
-    var nav_list = HTMLnavlist.replace("%data%",navigation.title[nav]);
-    $('.nav__list').append(nav_list.replace("#","#"+navigation.anchor[nav]));
-   }
+    for (nav in navigation.title) {
+        var nav_list = HTMLnavlist.replace("%data%", navigation.title[nav]);
+        $('.nav__list').append(nav_list.replace("#", "#" + navigation.anchor[nav]));
+    }
 }
 
 /* useful functions */
@@ -325,6 +325,15 @@ education.display = function() {
     }
 }
 
+function swapClass(oldc, newc) {
+
+    $('#workExperience').removeClass(oldc);
+    $('#workExperience').addClass(newc);
+    $('#projects').removeClass(oldc);
+    $('#projects').addClass(newc);
+    $('#education').removeClass(oldc);
+    $('#education').addClass(newc);
+}
 /*  DISPLAY the RESUME */
 
 bio.display();
@@ -336,17 +345,6 @@ displayNavigation();
 //displayInternationalizeButton();
 
 //  Change Header backgroud color
-
-function swapClass(oldc, newc) {
-
-    $('#workExperience').removeClass(oldc) ;
-    $('#workExperience').addClass(newc) ;
-    $('#projects').removeClass(oldc) ;
-    $('#projects').addClass(newc) ;
-    $('#education').removeClass(oldc) ;
-    $('#education').addClass(newc) ;
-}
-
 var skill_ul = $('#skills');
 var header = $('#header');
 
@@ -356,34 +354,34 @@ $(document).ready(function() {
         skill_ul.addClass("flex-box-col");
     }
     if ($(window).width() >= 1200) {
-        swapClass("col-12","colg-4") ;
+        swapClass("col-12", "colg-4");
     } else {
-        swapClass("colg-4","col-12") ;
+        swapClass("colg-4", "col-12");
     }
 });
 
 // change display orientation when window size > 600 px  ( row -> column) and remove open class just in case
 $(window).resize(function() {
-    var nav_li = $(".nav__list").children('li') ;
+    var nav_li = $(".nav__list").children('li');
     if ($(window).width() >= 600) {
         skill_ul.addClass("flex-box-col");
         $(".nav").removeClass("open");
-        $(".nav__item").removeClass("open") ;
+        $(".nav__item").removeClass("open");
 
     } else {
         skill_ul.removeClass("flex-box-col");
     }
     if ($(window).width() >= 1200) {
-            swapClass("col-12","colg-4") ;
+        swapClass("col-12", "colg-4");
     } else {
-        swapClass("colg-4","col-12") ;
+        swapClass("colg-4", "col-12");
     }
 });
 
-$("#menu" ).click(function() {
-    $(".nav").toggleClass("open") ;
-    $(".nav__list").toggleClass("open") ;
-    $(".nav__item").toggleClass("open") ;
+$("#menu").click(function() {
+    $(".nav").toggleClass("open");
+    $(".nav__list").toggleClass("open");
+    $(".nav__item").toggleClass("open");
 });
 
 
