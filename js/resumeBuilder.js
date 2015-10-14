@@ -161,6 +161,18 @@ var mapmaker = {
     }
 }
 
+var navigation =  {
+  "title" : ["Work Experience","Projects","Education","Map"],
+  "anchor" : ["workExperience","projects","education","mapDiv"]
+}
+var HTMLnavlist = '<li class="nav__item"><a href="#"">%data%</a></li>';
+
+function displayNavigation() {
+   for ( nav in navigation.title) {
+    var nav_list = HTMLnavlist.replace("%data%",navigation.title[nav]);
+    $('.nav__list').append(nav_list.replace("#","#"+navigation.anchor[nav]));
+   }
+}
 
 /* useful functions */
 function displayMap() {
@@ -320,25 +332,35 @@ work.display();
 project.display();
 education.display();
 displayMap();
-displayInternationalizeButton();
+displayNavigation();
+//displayInternationalizeButton();
 
 //  Change Header backgroud color
+var skill_ul = $('#skills');
 var header = $('#header');
 $(document).ready(function() {
     header.css("background-color", "rgb(116,130,101)");
     if ($(window).width() >= 600) {
-        ul.addClass("flex-box-col");
+        skill_ul.addClass("flex-box-col");
     }
 });
 
-// change display orientation when window size > 600 px  ( row -> column)
-var ul = $('#skills');
+// change display orientation when window size > 600 px  ( row -> column) and remove open class just in case
 $(window).resize(function() {
+    var nav_li = $(".nav__list").children('li') ;
     if ($(window).width() >= 600) {
-        ul.addClass("flex-box-col");
+        skill_ul.addClass("flex-box-col");
+        $(".nav").removeClass("open");
+        $(".nav__item").removeClass("open") ;
     } else {
-        ul.removeClass("flex-box-col");
+        skill_ul.removeClass("flex-box-col");
     }
+});
+
+$("#menu" ).click(function() {
+    $(".nav").toggleClass("open") ;
+    $(".nav__list").toggleClass("open") ;
+    $(".nav__item").toggleClass("open") ;
 });
 
 

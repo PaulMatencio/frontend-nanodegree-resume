@@ -23,8 +23,10 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:100,200,300" rel="stylesheet" style="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <!-- Load the page styles. -->
+
     <link href="css/style.css" rel="stylesheet">
     <link href="css/grid.css" rel="stylesheet">
+    <link href="css/nav.css" rel="stylesheet">
     <!--
       jQuery is a common JavaScript library for reading and making changes to the
       Document Object Model (DOM). The DOM is a tree that contains information
@@ -50,6 +52,17 @@
   </head>
   <!-- body unresolved -->
   <body>
+    <div class="header__menu">
+        <a id="menu">
+           <svg xmls="http://www/w3/org/2000/svg" viwbox="0 0 24 24">
+             <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
+           </svg> 
+        </a> 
+    </div> 
+    <nav id="nav" class="nav">
+      <ul class="nav__list">
+      </ul>
+    </nav>
     <div id="main">
       <!-- You'll be deleting this line in the course -->
       <!--
@@ -62,6 +75,7 @@
         <ul id="topContacts" class='flex-box'></ul>
       </div>
       <div style='clear: both;'></div>
+
       <div id="workExperience" class='gray'>
         <h2>Work Experience</h2>
       </div>
